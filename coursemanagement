@@ -1,0 +1,152 @@
+package Course;
+
+public class Ptsccmain {
+	// Person Class
+    public static class Person {
+        protected int id;
+        protected String name;
+        protected String department;
+
+        public Person(int id, String name, String department) {
+            this.id = id;
+            this.name = name;
+            this.department = department;
+        }
+
+        public void show() {
+            System.out.println("ID: " + id);
+            System.out.println("Name: " + name);
+            System.out.println("Department: " + department);
+        }
+    }
+
+    // Student Class
+    public static class Student extends Person {
+        private String batch;
+
+        public Student(int id, String name, String department, String batch) {
+            super(id, name, department);
+            this.batch = batch;
+        }
+
+        @Override
+        public void show() {
+            super.show();
+            System.out.println("Batch: " + batch);
+        }
+    }
+
+    // Teacher Class
+    public static class Teacher extends Person {
+        private String initials;
+        private double basicSalary;
+
+        public Teacher(int id, String name, String department, String initials, double basicSalary) {
+            super(id, name, department);
+            this.initials = initials;
+            this.basicSalary = basicSalary;
+        }
+
+        public double calculateSalary() {
+            return basicSalary;  // Salary calculation can be adjusted here
+        }
+
+        @Override
+        public void show() {
+            super.show();
+            System.out.println("Initials: " + initials);
+            System.out.println("Salary: " + calculateSalary());
+        }
+    }
+
+    // PartTimeTeacher Class
+    public static class PartTimeTeacher extends Teacher {
+        private double allowance;
+
+        public PartTimeTeacher(int id, String name, String department, String initials, double basicSalary, double allowance) {
+            super(id, name, department, initials, basicSalary);
+            this.allowance = allowance;
+        }
+
+        @Override
+        public double calculateSalary() {
+            return super.calculateSalary() + allowance;
+        }
+
+        @Override
+        public void show() {
+            super.show();
+            System.out.println("Allowance: " + allowance);
+            System.out.println("Total Salary: " + calculateSalary());
+        }
+    }
+
+    // Course Class
+    public static class Course {
+        private String courseCode;
+        private String title;
+        private int creditHours;
+
+        public Course(String courseCode, String title, int creditHours) {
+            this.courseCode = courseCode;
+            this.title = title;
+            this.creditHours = creditHours;
+        }
+
+        public void show() {
+            System.out.println("Course Code: " + courseCode);
+            System.out.println("Title: " + title);
+            System.out.println("Credit Hours: " + creditHours);
+        }
+    }
+
+    // CourseOffer Class
+    public static class CourseOffer {
+        private String semester;
+        private Course course;
+        private Teacher teacher;
+
+        public CourseOffer(String semester, Course course, Teacher teacher) {
+            this.semester = semester;
+            this.course = course;
+            this.teacher = teacher;
+        }
+
+        public void show() {
+            System.out.println("Semester: " + semester);
+            course.show();
+            teacher.show();
+        }
+    }
+
+    // Main Class
+    public static void main(String[] args) {
+        // Create students
+        Student student1 = new Student(1, "John Doe", "Computer Science", "Batch 2024");
+        Student student2 = new Student(2, "Jane Smith", "Mathematics", "Batch 2023");
+
+        // Create teachers
+        Teacher teacher1 = new Teacher(1001, "Dr. Alan Walker", "Computer Science", "AW", 5000);
+        PartTimeTeacher teacher2 = new PartTimeTeacher(1002, "Prof. Linda Green", "Mathematics", "LG", 3000, 500);
+
+        // Create courses
+        Course course1 = new Course("CS101", "Introduction to Programming", 3);
+        Course course2 = new Course("MATH202", "Advanced Calculus", 4);
+
+        // Create course offers
+        CourseOffer offer1 = new CourseOffer("Fall 2024", course1, teacher1);
+        CourseOffer offer2 = new CourseOffer("Spring 2024", course2, teacher2);
+
+        // Display information
+        System.out.println("Student 1 Information:");
+        student1.show();
+        System.out.println("\nStudent 2 Information:");
+        student2.show();
+
+        System.out.println("\nCourse Offer 1 Information:");
+        offer1.show();
+        System.out.println("\nCourse Offer 2 Information:");
+        offer2.show();
+
+}
+}
