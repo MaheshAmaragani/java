@@ -1,0 +1,100 @@
+package car.showroom;
+
+public class carshowroom {
+	// show room
+	public static class Showroom {
+		protected String Showroom_name;
+		protected String Showroom_add;
+		protected int total_employes;
+		protected int total_no_of_cars;
+		protected String Showroom_maneger_name;
+
+		public Showroom(String Showroom_name, String Showroom_add, int total_employes, int total_no_of_cars,
+				String Showroom_maneger_name) {
+			this.Showroom_name = Showroom_name;
+			this.Showroom_add = Showroom_add;
+			this.total_employes = total_employes;
+			this.total_no_of_cars = total_no_of_cars;
+			this.Showroom_maneger_name = Showroom_maneger_name;
+		}
+
+		public void show() {
+			System.out.println("ShowroomName:" + Showroom_name);
+			System.out.println("ShowroomAddress:" + Showroom_add);
+			System.out.println("Total no of employes:" + total_employes);
+			System.out.println("Total no of cars:" + total_no_of_cars);
+			System.out.println("Showroom Maneger Name:" + Showroom_maneger_name);
+		}
+	}
+//car
+	public static class Car extends Showroom {
+		protected String Car_name;
+		protected String Car_color;
+		protected String Car_fuel;
+		protected int Car_price;
+		protected String type_of_car;
+		protected String Car_transmission;
+		public Car(String Showroom_name, String Showroom_add, int total_employes, int total_no_of_cars,
+				String Showroom_maneger_name,String Car_name,String Car_color,String Car_fuel,int Car_price,String type_of_car,String Car_transmission) {
+			super(Showroom_name,Showroom_add,total_employes,total_no_of_cars,Showroom_maneger_name);
+			this.Car_name=Car_name;
+			this.Car_color=Car_color;
+			this.Car_fuel=Car_fuel;
+			this.Car_price=Car_price;
+			this.type_of_car=type_of_car;
+			this.Car_transmission=Car_transmission;
+		}
+		public void show() {
+			System.out.println("CarName:" + Car_name);
+			System.out.println("Car_Colour:" + Car_color);
+			System.out.println("Car_fuel:" + Car_fuel);
+			System.out.println("Car_Price:" + Car_price);
+			System.out.println("Car_Type:" + type_of_car);
+			System.out.println("Car_transmission:" + Car_transmission);
+		}
+
+	}
+//emp
+	public static class Employee extends Showroom {
+		protected String emp_name;
+		protected String emp_dept;
+		protected int emp_id;
+		protected int emp_age;
+		public Employee(String Showroom_name, String Showroom_add, int total_employes, int total_no_of_cars,
+				String Showroom_maneger_name,String emp_name,String emp_dept,int emp_id,int emp_age) {
+			super(Showroom_name,Showroom_add,total_employes,total_no_of_cars,Showroom_maneger_name);
+			this.emp_name=emp_name;
+			this.emp_dept=emp_dept;
+			this.emp_age=emp_age;
+			this.emp_id=emp_id;
+			
+		}
+		public void show() {
+			System.out.println("Emp_id:" +emp_id);
+			System.out.println("Emp_Name:" + emp_name);
+			System.out.println("Emp_age:" + emp_age);
+			System.out.println("Emp_dept:" + emp_dept);
+			
+			
+		}
+		
+		
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Showroom sr=new Showroom("TATA","hyd", 34, 24, "vicky");
+		Car c=new Car("TATA","HYD", 45, 56, "vickk", "TATA","red", "petrol", 2000000,"Nexa","Manual");
+		Employee e=new Employee("TATA","HYD", 45, 65, "VICCK","VACK", "SALES", 25, 30);
+		System.out.println("Showroom Details..........");
+		sr.show();
+		System.out.println("Showroom car Details..........");
+		c.show();
+		System.out.println("Showroom employee Details..........");
+		e.show();
+		
+
+	}
+
+}
